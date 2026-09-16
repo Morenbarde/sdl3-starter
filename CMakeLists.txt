@@ -16,19 +16,29 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 
-add_subdirectory(external/SDL EXCLUDE_FROM_ALL)
 
 # Set include directories
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-# Get source files
+# Add all main project source files here
 file(GLOB SRC src/*cpp)
 
-# Create Executables
-add_executable(${PROJECT_NAME} src/main.cpp)
 
-# Target source files
-target_sources(${PROJECT_NAME} PRIVATE ${SRC})
+# Set external libraries
+add_subdirectory(external/SDL EXCLUDE_FROM_ALL)
+add_subdirectory(external/SDL_ttf EXCLUDE_FROM_ALL)
 
-# Link external libraries
-target_link_libraries(${PROJECT_NAME} PRIVATE SDL3::SDL3)
+set(SDL_LIBS SDL3_ttf::SDL3_ttf SDL3::SDL3)
+
+
+# Create Main Executable
+add_executable(${CMAKE_PROJECT_NAME} src/main.cpp)
+target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${SRC})
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${SDL_LIBS})
+
+# Create Test Executables
+
+add_subdirectory(test)
+
+
+

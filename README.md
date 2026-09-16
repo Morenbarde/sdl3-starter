@@ -33,3 +33,5 @@ If any files are added to the source directory, cmake needs to be run again to d
 ```
 cmake ..
 ```
+
+Building the project will also create several test files which can be used to make sure each of the SDL libraries are linked and working correctly. These are generated in the build/test folder.
