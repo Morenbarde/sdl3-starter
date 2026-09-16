@@ -1,8 +1,13 @@
 #include <iostream>
 
+#include "starter.h"
+
 int main() {
-    
-    std::cout << "Hello World!" << std::endl;
+
+
+    Starter start;
+
+    std::cout << start.say_hello() << std::endl;
 
     return 0;
 }
