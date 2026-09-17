@@ -27,8 +27,11 @@ file(GLOB SRC src/*cpp)
 # Set external libraries
 add_subdirectory(external/SDL EXCLUDE_FROM_ALL)
 add_subdirectory(external/SDL_ttf EXCLUDE_FROM_ALL)
+add_subdirectory(external/SDL_image EXCLUDE_FROM_ALL)
+add_subdirectory(external/SDL_mixer EXCLUDE_FROM_ALL)
+add_subdirectory(external/SDL_net EXCLUDE_FROM_ALL)
 
-set(SDL_LIBS SDL3_ttf::SDL3_ttf SDL3::SDL3)
+set(SDL_LIBS SDL3_ttf::SDL3_ttf SDL3_image::SDL3_image SDL3_mixer::SDL3_mixer SDL3_net::SDL3_net SDL3::SDL3)
 
 
 # Create Main Executable
@@ -36,8 +39,8 @@ add_executable(${CMAKE_PROJECT_NAME} src/main.cpp)
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${SRC})
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${SDL_LIBS})
 
-# Create Test Executables
 
+# Create Test Executables
 add_subdirectory(test)
 
 
