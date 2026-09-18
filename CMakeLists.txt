@@ -3,6 +3,11 @@ cmake_minimum_required(VERSION 3.16)
 # Project name
 project(sdl3-starter)
 
+# Default build type
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
+
 ###############
 # C++ Options #
 ###############
@@ -40,8 +45,10 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${SRC})
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ${SDL_LIBS})
 
 
-# Create Test Executables
-add_subdirectory(test)
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    # Create Test Executables if in debug mode
+    add_subdirectory(test)
+endif()
 
 
 
