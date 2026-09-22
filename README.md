@@ -6,7 +6,7 @@ This repository defines a simple base for setting up an SDL3 project in a Linux 
 
 To install with SDL submodules, run:
 ```
-git clone --recurse-submodules -j8 https://github.com/Morenbarde/sdl3-starter.git
+git clone --depth=1 --recurse-submodules -j8 https://github.com/Morenbarde/sdl3-starter.git
 cd sdl3-starter
 ```
 
